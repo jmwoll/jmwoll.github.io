@@ -4,14 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Machine Learning in Drug Discovery</title>
+  <meta name="description" content="Stories about machine learning in drug discovery, by Jan Wollschlaeger.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #f2f5f1;
       --ink-soft: #b9cfc6;
       --deep: #0d3f37;
+      --body: #2e3a36;
+      --body-soft: #5d6f68;
+      --rule: #cfd9d2;
+      --pale: #e8eee7;
+      --pale-deep: #d6e2d8;
+      --accent: #1d5e50;
+      --accent-warm: #b2704a;
+      --sans: "Josefin Sans", system-ui, sans-serif;
+      --serif: "Libre Baskerville", Georgia, serif;
     }
 
     * { box-sizing: border-box; }
@@ -19,16 +29,22 @@
     body {
       margin: 0;
       background: #f4f4f0;
-      font-family: "Josefin Sans", system-ui, sans-serif;
+      color: var(--body);
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ---------- Header ---------- */
+    /* ======================================================= Header */
     .site-header {
       position: relative;
       overflow: hidden;
       min-height: 240px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
       padding: 32px clamp(16px, 2vw, 24px);
       color: var(--ink);
       background:
@@ -44,7 +60,7 @@
         linear-gradient(100deg, #1c5a4c 0%, #145046 30%, #2c6a5a 60%, #4f8270 85%, #3d7563 100%);
     }
 
-    /* hexagonal lattice (replaces the topographic texture) */
+    /* hexagonal lattice */
     .site-header::before {
       content: "";
       position: absolute;
@@ -95,6 +111,7 @@
 
     .brand h1 {
       margin: 0;
+      font-family: var(--sans);
       font-weight: 300;
       font-size: clamp(26px, 4.1vw, 50px);
       letter-spacing: .06em;
@@ -105,10 +122,269 @@
 
     .brand p {
       margin: 10px 0 0;
-      font-family: "Libre Baskerville", Georgia, serif;
+      font-family: var(--serif);
       font-style: italic;
       font-size: clamp(15px, 1.7vw, 21px);
       color: var(--ink-soft);
+    }
+
+    .header-link {
+      position: relative;
+      z-index: 1;
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 14px 20px 14px 28px;
+      font-family: var(--sans);
+      font-size: 14px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .28);
+      transition: background .2s ease;
+    }
+    .header-link:hover { background: rgba(255, 255, 255, .16); }
+    .header-link span {
+      padding-left: 24px;
+      border-left: 1px solid rgba(255, 255, 255, .28);
+      font-size: 17px;
+    }
+    @media (max-width: 860px) { .header-link { display: none; } }
+
+    /* ======================================================= Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      align-items: start;
+      background: var(--pale);
+    }
+
+    .story {
+      background: #fff;
+      padding: clamp(28px, 4vw, 68px) clamp(20px, 4vw, 72px) clamp(40px, 5vw, 80px);
+      min-width: 0;
+    }
+
+    .sidebar {
+      padding: clamp(28px, 4vw, 68px) clamp(20px, 3vw, 40px);
+      font-family: var(--sans);
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    /* ======================================================= Story */
+    .eyebrow {
+      margin: 0 0 14px;
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+
+    .story h2 {
+      margin: 0 0 18px;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.18;
+      letter-spacing: .02em;
+      color: var(--deep);
+    }
+
+    .byline {
+      margin: 0 0 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 14px;
+      letter-spacing: .1em;
+      color: var(--body-soft);
+    }
+
+    .lede {
+      font-size: 19px;
+      line-height: 1.72;
+      color: #27332f;
+    }
+
+    .story h3 {
+      margin: 54px 0 16px;
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 21px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .story p { margin: 0 0 20px; }
+    .story a { color: var(--accent); text-decoration-color: #9cc0b4; text-underline-offset: 3px; }
+    .story a:hover { color: var(--accent-warm); }
+    .story strong { font-weight: 700; color: #1f2b27; }
+
+    /* pull quote */
+    .pull {
+      margin: 40px 0;
+      padding: 4px 0 4px 26px;
+      border-left: 3px solid var(--accent-warm);
+      font-size: 21px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--accent);
+    }
+
+    /* figures */
+    figure {
+      margin: 48px 0;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 3px;
+    }
+    figcaption {
+      margin-top: 14px;
+      font-family: var(--sans);
+      font-size: 14.5px;
+      line-height: 1.6;
+      letter-spacing: .02em;
+      color: var(--body-soft);
+    }
+    figcaption b {
+      display: block;
+      margin-bottom: 2px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-size: 12.5px;
+      color: var(--accent-warm);
+    }
+
+    /* on narrow screens the diagrams would shrink past legibility — pan instead */
+    @media (max-width: 640px) {
+      figure { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      figure img { min-width: 560px; }
+      figcaption { position: sticky; left: 0; max-width: 100%; }
+    }
+
+    /* inline numbers */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 34px 0 40px;
+      padding: 0;
+      list-style: none;
+    }
+    .stat-row li {
+      flex: 1 1 150px;
+      padding: 16px 18px;
+      background: var(--pale);
+      border-top: 2px solid var(--accent);
+      font-family: var(--sans);
+    }
+    .stat-row b {
+      display: block;
+      font-size: 27px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--deep);
+    }
+    .stat-row span {
+      font-size: 13px;
+      line-height: 1.45;
+      letter-spacing: .04em;
+      color: var(--body-soft);
+    }
+
+    /* ======================================================= Sidebar */
+    .sidebar h4 {
+      margin: 0 0 18px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--body-soft);
+    }
+    .sidebar section + section {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--pale-deep);
+    }
+    .paper {
+      margin: 0 0 24px;
+      font-family: var(--serif);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .paper em {
+      display: block;
+      margin-bottom: 4px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 15.5px;
+      letter-spacing: .06em;
+      color: var(--deep);
+    }
+    .paper span { color: var(--body-soft); font-size: 13.5px; }
+    .sidebar a { color: var(--accent); text-underline-offset: 3px; }
+    .sidebar a:hover { color: var(--accent-warm); }
+    .sidebar ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .sidebar ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--pale-deep);
+      color: var(--body-soft);
+    }
+    .sidebar ul li b {
+      display: block;
+      font-weight: 400;
+      color: var(--deep);
+      font-size: 15.5px;
+      letter-spacing: .04em;
+    }
+
+    /* ======================================================= Closing band */
+    .closing {
+      position: relative;
+      padding: clamp(40px, 5vw, 72px) clamp(20px, 4vw, 72px);
+      background: var(--pale-deep);
+      border-top: 1px solid #c3d2c6;
+    }
+    .closing h3 {
+      margin: 0 0 20px;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(22px, 2.6vw, 30px);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--deep);
+    }
+    .closing p {
+      max-width: 72ch;
+      margin: 0 0 18px;
+    }
+    .closing a { color: var(--accent); text-underline-offset: 3px; }
+
+    footer.site-foot {
+      padding: 28px clamp(20px, 4vw, 72px) 44px;
+      background: var(--pale-deep);
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: .1em;
+      color: var(--body-soft);
     }
   </style>
 </head>
@@ -118,7 +394,7 @@
     <canvas class="contours" aria-hidden="true"></canvas>
 
     <div class="brand">
-      <!-- brush-stroke benzene ring (in place of the ensō) -->
+      <!-- brush-stroke benzene ring -->
       <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
         <defs>
           <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
@@ -137,7 +413,232 @@
         <p>by Jan Wollschlaeger</p>
       </div>
     </div>
+
+    <a class="header-link" href="#papers">The papers <span>&rsaquo;</span></a>
   </header>
+
+  <div class="layout">
+    <!-- ================================================= Story -->
+    <article class="story">
+      <p class="eyebrow">Story 01 &middot; Explainable AI</p>
+      <h2>Explainable AI for Molecules: The WISP Framework</h2>
+      <p class="byline">Jan Wollschlaeger &middot; on two papers in <i>Digital Discovery</i>, 2026</p>
+
+      <p class="lede">
+        A machine learning model predicts that your compound is too lipophilic. Alongside the number comes a
+        picture: the molecule, with its atoms washed in red and blue, showing which parts pushed the prediction
+        up and which pulled it down. It is a persuasive image. A chemist can act on it — swap that group, keep
+        this ring. But the picture carries no error bar, and nothing about it tells you whether the model was
+        reasoning about chemistry or about a coincidence in its training data.
+      </p>
+
+      <p>
+        That gap is the subject of two papers I worked on with Kerrin Janssen, Jonny Proppe and Andreas Göller,
+        published in <i>Digital Discovery</i> earlier this year. They introduce <strong>WISP</strong> — a Workflow
+        for Interpretability Scoring using matched molecular Pairs — which turns the question "can I trust this
+        heatmap?" from a matter of taste into a measurement.
+      </p>
+
+      <h3>One change at a time</h3>
+
+      <p>
+        The idea rests on an old trick from medicinal chemistry. A <strong>matched molecular pair</strong> is two
+        molecules that are identical except for one well-defined piece: a chlorine where the other has a methyl
+        group, a hydroxyl where the other has nothing. Chemists like such pairs because any difference in measured
+        behaviour can be pinned on the one thing that changed.
+      </p>
+
+      <p>
+        That same property makes them a test for explanations. Take the atom-level attributions the explainability
+        method produced, and add up only those sitting on the part that changed. If the explanation is doing its
+        job, that sum should move in step with how much the model's prediction moved between the two molecules.
+        Plot one point per pair, and the scatter tells you how tightly the explanation tracks the model.
+      </p>
+
+      <figure>
+        <img src="assets/fig-mmp.svg" alt="Two molecules differing by one substituent. The attributions summed over the changed part are compared against the change in the model's prediction, giving one point per pair on a parity plot.">
+        <figcaption>
+          <b>The measurement</b>
+          Everything outside the circled group is shared between the two molecules, so a well-behaved explanation
+          should assign it the same weight both times. What is left over is attributable to the single change.
+        </figcaption>
+      </figure>
+
+      <p>
+        The unchanged part is just as informative. In principle it should contribute nothing to the difference —
+        it is, after all, the same atoms in the same arrangement. In practice it never quite does, and the width of
+        that spread turns out to be a reliable smell test. The papers suggest a working rule of thumb: once the
+        standard deviation in the constant part climbs to around 5 or above, treat the heatmaps with suspicion.
+      </p>
+
+      <h3>A workflow that doesn't care what your model is</h3>
+
+      <p>
+        For this to be useful it has to work on whatever model someone actually has. WISP's answer is an
+        <strong>atom attributor</strong> that never looks inside the model at all. It takes an atom, substitutes
+        other elements in its place, asks the model to predict the mutated molecule, and records how far the answer
+        moved. Average that over the valid substitutions and you have that atom's attribution — roughly 324 extra
+        predictions for a typical 27-atom molecule.
+      </p>
+
+      <p>
+        Because it only ever asks the model for predictions on slightly altered SMILES strings, it works equally on
+        a directed message-passing graph network, a random forest over fingerprints, or anything else that maps a
+        molecule to a number. WISP also wraps the two attribution methods people already use — RDKit's similarity
+        maps and SHAP — so they can be scored side by side on the same data.
+      </p>
+
+      <figure>
+        <img src="assets/fig-workflow.svg" alt="The WISP workflow in four stages: a dataset of SMILES with a measured property, a model you supply or WISP trains, the atom attributor, and the resulting scores.">
+        <figcaption>
+          <b>How WISP works</b>
+          Bring a model or let the workflow train one; either way the scoring step is the same. The whole thing
+          runs from a dataset of SMILES strings and one measured property.
+        </figcaption>
+      </figure>
+
+      <h3>The uncomfortable finding</h3>
+
+      <p>
+        Once you can score explanations, you can ask which models deserve them — and the answer is sobering.
+        Explanation quality turns out to be tied to model quality much more tightly than anyone's intuition
+        suggests, and the diagnostic sits in a place most people never look: the gap between the molecules the
+        model trained on and the ones it has never seen.
+      </p>
+
+      <p>
+        A support-vector model of experimental log P makes the point. Across whole molecules its attributions track
+        its own predictions almost perfectly, r&sup2; = 0.96, which looks like a resounding success. Ask instead how
+        well those attributions track the <em>measured</em> log P, and the training molecules score 0.87 while the
+        held-out molecules score 0.17. The explanation had been describing the model's habits, not the chemistry.
+        Swapping in a graph network on the same data cut the spread in the unchanged part from ±21 to ±5.
+      </p>
+
+      <figure>
+        <img src="assets/fig-diagnostic.svg" alt="Two models compared. The first explains its training molecules at 0.87 but collapses to 0.17 on unseen ones, with a spread of plus or minus 21 in the unchanged part. The second scores 0.78 and 0.77 with a spread of plus or minus 4.">
+        <figcaption>
+          <b>The tell is the drop</b>
+          Both models produce confident, colourful heatmaps. The one on the left falls apart the moment it meets a
+          molecule it was not trained on — which is precisely the situation a chemist would use it in.
+        </figcaption>
+      </figure>
+
+      <p class="pull">
+        A drop in explainability on held-out data is not a problem with the explanation. It is the model telling
+        you it never learned the chemistry.
+      </p>
+
+      <h3>What happens on real problems</h3>
+
+      <p>
+        The second paper takes WISP to the tasks people actually care about, and the results are a mixed, honest
+        picture. On Factor Xa binding affinities all three attribution methods behave sensibly, and the heatmaps
+        correctly single out a bromine-for-iodine swap that an earlier published method had missed. On reaction
+        yields the whole-molecule score of 0.92 collapses to 0.25 against the measured yields — the model had found
+        numerical structure in a combinatorial dataset rather than chemistry.
+      </p>
+
+      <p>
+        The starkest case is Ames mutagenicity. The classifier is accurate — 80% — and would pass any ordinary
+        review. But its explanations refuse to settle on the aliphatic halides and aromatic amines that are
+        textbook mutagenic motifs, scattering attribution across the unchanged parts instead. A model can be right
+        for the wrong reasons, and without something like WISP you would never know.
+      </p>
+
+      <ul class="stat-row">
+        <li><b>8</b><span>model-and-dataset experiments scored across both papers</span></li>
+        <li><b>2</b><span>of them explain unseen molecules well enough to act on</span></li>
+        <li><b>0.95</b><span>best sign accuracy, on aqueous solubility</span></li>
+        <li><b>±5</b><span>spread in the constant part, above which heatmaps need caution</span></li>
+      </ul>
+
+      <p>
+        Two of eight is a modest-sounding result, and it is the most important number in either paper. Explaining
+        predictions on molecules a model has already seen is a solved-enough problem; explaining predictions on new
+        ones, which is the only case that matters for design, mostly is not yet. Knowing <em>which</em> of your
+        models falls on which side of that line is what WISP actually buys you.
+      </p>
+    </article>
+
+    <!-- ================================================= Sidebar -->
+    <aside class="sidebar">
+      <section id="papers">
+        <h4>The papers</h4>
+        <p class="paper">
+          <em>When machine learning models learn chemistry I</em>
+          Quantifying explainability with matched molecular pairs<br>
+          <span>
+            Janssen, K.; Wollschläger, J. M.; Proppe, J.; Göller, A. H.<br>
+            <i>Digital Discovery</i> <b>2026</b>, <i>5</i>, 571.<br>
+            <a href="https://doi.org/10.1039/d5dd00398a">10.1039/d5dd00398a</a>
+          </span>
+        </p>
+        <p class="paper">
+          <em>When machine learning models learn chemistry II</em>
+          Applying WISP to real-world examples<br>
+          <span>
+            Janssen, K.; Wollschläger, J. M.; Proppe, J.; Göller, A. H.<br>
+            <i>Digital Discovery</i> <b>2026</b>, <i>5</i>, 583.<br>
+            <a href="https://doi.org/10.1039/d5dd00399g">10.1039/d5dd00399g</a>
+          </span>
+        </p>
+        <p class="paper">
+          <span>Both published open access under CC-BY 4.0.</span>
+        </p>
+      </section>
+
+      <section>
+        <h4>The code</h4>
+        <ul>
+          <li>
+            <b>kerjans/ml-XAI</b>
+            WISP, the atom attributor and a public web app —
+            <a href="https://github.com/kerjans/ml-XAI">on GitHub</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>In short</h4>
+        <ul>
+          <li>
+            <b>The question</b>
+            Does a molecular heatmap reflect chemistry, or the model's quirks?
+          </li>
+          <li>
+            <b>The method</b>
+            Score explanations on pairs of molecules that differ by one group.
+          </li>
+          <li>
+            <b>The catch</b>
+            Explanations are only as trustworthy as the model underneath them.
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <!-- ================================================= Closing -->
+  <section class="closing">
+    <h3>Why this matters</h3>
+    <p>
+      Explainability in chemistry has, for a few years now, been something you demonstrate rather than measure: a
+      handful of well-chosen molecules, a convincing heatmap, a figure in a paper. The useful move in these two
+      papers is not a new attribution method — it is treating explainability as something with a test set, a score
+      and a failure mode, exactly like the predictions themselves.
+    </p>
+    <p>
+      That reframing has a practical payoff. If explainability performance drops between training and test data,
+      you have learned something actionable about your model before anyone synthesises anything: which
+      transformations it has never properly seen, which parts of your dataset need filling in, whether its advice
+      is worth following at all.
+    </p>
+  </section>
+
+  <footer class="site-foot">
+    Jan Wollschlaeger &middot; Machine Learning in Drug Discovery
+  </footer>
+
   <script>
     // Draws thin, evenly weighted contour lines of a smooth noise field.
     (function () {

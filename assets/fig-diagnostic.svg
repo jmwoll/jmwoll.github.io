@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 450" role="img" aria-labelledby="t3 d3">
+  <title id="t3">Explainability that collapses on unseen molecules is a warning about the model</title>
+  <desc id="d3">Two models compared. One explains its training molecules well but collapses on held-out molecules; the other holds up. The gap between training and test is the diagnostic.</desc>
+
+  <defs>
+    <linearGradient id="dg-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="dg-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="880" height="450" fill="url(#dg-bg)"/>
+  <rect width="880" height="450" fill="url(#dg-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">THE TELL IS THE DROP</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">How well the explanations track the real measured property — on molecules seen, and unseen.</text>
+
+    <!-- ================= left card: the flattering model ================= -->
+    <g transform="translate(40 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#c98b63" stroke-width="1"/>
+
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#f3bd8c">LOOKS EXPLAINABLE</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">fingerprint model, experimental log P</text>
+
+      <!-- bars -->
+      <g transform="translate(24 84)">
+        <text x="0" y="22" font-size="11.5" letter-spacing="1.4" fill="#8fb3a6">SEEN</text>
+        <rect x="62" y="8" width="226" height="17" rx="2" fill="#0a3831" opacity=".55"/>
+        <rect x="62" y="8" width="197" height="17" rx="2" fill="#9fd8c4" opacity=".75"/>
+        <text x="300" y="22" font-size="14" fill="#f2f5f1">0.87</text>
+
+        <text x="0" y="58" font-size="11.5" letter-spacing="1.4" fill="#8fb3a6">UNSEEN</text>
+        <rect x="62" y="44" width="226" height="17" rx="2" fill="#0a3831" opacity=".55"/>
+        <rect x="62" y="44" width="38" height="17" rx="2" fill="#e09060"/>
+        <text x="300" y="58" font-size="14" fill="#f3bd8c">0.17</text>
+      </g>
+
+      <!-- constant part spread -->
+      <g transform="translate(24 174)">
+        <text x="0" y="0" font-size="11.5" letter-spacing="1.3" fill="#8fb3a6">SPREAD IN THE UNCHANGED PART</text>
+        <path d="M0 20 H300" stroke="#5e9183" stroke-width="1" opacity=".5" fill="none"/>
+        <path d="M150 12 V28" stroke="#8fb3a6" stroke-width="1" fill="none"/>
+        <path d="M24 20 H276" stroke="#e09060" stroke-width="3" stroke-linecap="round" fill="none" opacity=".85"/>
+        <text x="312" y="24" font-size="13" fill="#f3bd8c">±21</text>
+      </g>
+
+      <path d="M24 216 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="238" font-size="12.5" fill="#f3bd8c" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">It learned the numbers, not the chemistry.</text>
+    </g>
+
+    <!-- ================= right card: the honest model ================= -->
+    <g transform="translate(450 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#6fb49a" stroke-width="1"/>
+
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#9fd8c4">HOLDS UP</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">graph network, aqueous solubility</text>
+
+      <g transform="translate(24 84)">
+        <text x="0" y="22" font-size="11.5" letter-spacing="1.4" fill="#8fb3a6">SEEN</text>
+        <rect x="62" y="8" width="226" height="17" rx="2" fill="#0a3831" opacity=".55"/>
+        <rect x="62" y="8" width="176" height="17" rx="2" fill="#9fd8c4" opacity=".75"/>
+        <text x="300" y="22" font-size="14" fill="#f2f5f1">0.78</text>
+
+        <text x="0" y="58" font-size="11.5" letter-spacing="1.4" fill="#8fb3a6">UNSEEN</text>
+        <rect x="62" y="44" width="226" height="17" rx="2" fill="#0a3831" opacity=".55"/>
+        <rect x="62" y="44" width="174" height="17" rx="2" fill="#9fd8c4"/>
+        <text x="300" y="58" font-size="14" fill="#9fd8c4">0.77</text>
+      </g>
+
+      <g transform="translate(24 174)">
+        <text x="0" y="0" font-size="11.5" letter-spacing="1.3" fill="#8fb3a6">SPREAD IN THE UNCHANGED PART</text>
+        <path d="M0 20 H300" stroke="#5e9183" stroke-width="1" opacity=".5" fill="none"/>
+        <path d="M150 12 V28" stroke="#8fb3a6" stroke-width="1" fill="none"/>
+        <path d="M126 20 H174" stroke="#9fd8c4" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <text x="312" y="24" font-size="13" fill="#9fd8c4">±4</text>
+      </g>
+
+      <path d="M24 216 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="238" font-size="12.5" fill="#9fd8c4" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">Its heatmaps are worth acting on.</text>
+    </g>
+
+    <!-- footer -->
+    <path d="M40 396 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="424" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      Both models produce confident, colourful heatmaps. Only one of them has earned the right to be believed.
+    </text>
+  </g>
+</svg>

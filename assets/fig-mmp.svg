@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 450" role="img" aria-labelledby="t1 d1">
+  <title id="t1">Matched molecular pairs turn an explanation into a measurable quantity</title>
+  <desc id="d1">Two nearly identical molecules differ by a single substituent. The attributions summed over the changed part are compared against the change in the model's prediction, one point per pair.</desc>
+
+  <defs>
+    <linearGradient id="mmp-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="55%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="mmp-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+    <marker id="mmp-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#cfe4da"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="450" fill="url(#mmp-bg)"/>
+  <rect width="880" height="450" fill="url(#mmp-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">ONE CHANGE AT A TIME</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">A matched molecular pair differs by a single, well-defined substituent.</text>
+
+    <!-- ========== molecule A ========== -->
+    <g transform="translate(96 168)">
+      <g fill="none" stroke="#dce9e2" stroke-width="2" stroke-linejoin="round" opacity=".5">
+        <path d="M0 0 l30 -17 l30 17 v34 l-30 17 l-30 -17 z"/>
+        <circle cx="30" cy="17" r="14"/>
+      </g>
+      <g fill="none" stroke="#f3bd8c" stroke-width="2.6" stroke-linecap="round">
+        <path d="M60 0 l26 -15 M86 -15 l0 -24 M86 -39 l-12 -8 M86 -39 l12 -8"/>
+      </g>
+      <circle cx="88" cy="-30" r="26" fill="none" stroke="#f0b27f" stroke-width="1.3" stroke-dasharray="4 5"/>
+      <text x="0" y="74" font-size="13" letter-spacing="1.6" fill="#8fb3a6">MOLECULE A</text>
+    </g>
+
+    <!-- ========== molecule B ========== -->
+    <g transform="translate(96 300)">
+      <g fill="none" stroke="#dce9e2" stroke-width="2" stroke-linejoin="round" opacity=".5">
+        <path d="M0 0 l30 -17 l30 17 v34 l-30 17 l-30 -17 z"/>
+        <circle cx="30" cy="17" r="14"/>
+      </g>
+      <g fill="none" stroke="#9fd8c4" stroke-width="2.6" stroke-linecap="round">
+        <path d="M60 0 l26 -15"/>
+        <circle cx="94" cy="-20" r="6"/>
+      </g>
+      <circle cx="88" cy="-22" r="26" fill="none" stroke="#86ccb5" stroke-width="1.3" stroke-dasharray="4 5"/>
+      <text x="0" y="74" font-size="13" letter-spacing="1.6" fill="#8fb3a6">MOLECULE B</text>
+    </g>
+
+    <!-- annotations, kept clear of the structures -->
+    <g font-size="12.5" letter-spacing="1.3">
+      <path d="M212 136 h26" stroke="#f0b27f" stroke-width="1.1" opacity=".75" fill="none"/>
+      <text x="246" y="140" fill="#f0b27f">VARIABLE PART</text>
+      <text x="246" y="158" fill="#86a99c" font-size="11.5" letter-spacing=".6">the one thing that differs</text>
+
+      <path d="M212 238 h26" stroke="#8fb3a6" stroke-width="1.1" opacity=".5" fill="none" stroke-dasharray="3 4"/>
+      <text x="246" y="242" fill="#a9c6ba">CONSTANT PART</text>
+      <text x="246" y="260" fill="#86a99c" font-size="11.5" letter-spacing=".6">shared by both molecules</text>
+    </g>
+
+    <!-- ========== the two quantities ========== -->
+    <g transform="translate(406 0)">
+      <g transform="translate(0 296)">
+        <rect width="212" height="76" rx="4" fill="#0f453c" opacity=".45" stroke="#5e9183" stroke-width="1"/>
+        <text x="18" y="29" font-size="12" letter-spacing="1.4" fill="#8fb3a6">WHAT THE EXPLANATION SAYS</text>
+        <text x="18" y="57" font-size="20" fill="#f2f5f1">Δ attributions</text>
+      </g>
+      <g transform="translate(0 110)">
+        <rect width="212" height="76" rx="4" fill="#0f453c" opacity=".45" stroke="#5e9183" stroke-width="1"/>
+        <text x="18" y="29" font-size="12" letter-spacing="1.4" fill="#8fb3a6">WHAT THE MODEL SAYS</text>
+        <text x="18" y="57" font-size="20" fill="#f2f5f1">Δ prediction</text>
+      </g>
+
+      <!-- compare -->
+      <path d="M106 186 v96" stroke="#cfe4da" stroke-width="1.2" opacity=".55" fill="none"/>
+      <circle cx="106" cy="234" r="17" fill="#17524a" stroke="#cfe4da" stroke-width="1.2" opacity=".9"/>
+      <text x="106" y="240" font-size="17" fill="#f2f5f1" text-anchor="middle">=?</text>
+    </g>
+
+    <!-- ========== parity plot ========== -->
+    <g transform="translate(676 150)">
+      <rect width="166" height="166" rx="4" fill="#0f453c" opacity=".35" stroke="#5e9183" stroke-width="1"/>
+      <path d="M30 140 H146 M30 140 V24" stroke="#8fb3a6" stroke-width="1.2" fill="none"/>
+      <path d="M30 140 L146 24" stroke="#f0b27f" stroke-width="1.2" stroke-dasharray="5 4" opacity=".8"/>
+      <g fill="#dff0e7" opacity=".85">
+        <circle cx="46" cy="126" r="3"/><circle cx="60" cy="118" r="3"/><circle cx="54" cy="110" r="3"/>
+        <circle cx="72" cy="104" r="3"/><circle cx="80" cy="94" r="3"/><circle cx="74" cy="88" r="3"/>
+        <circle cx="94" cy="80" r="3"/><circle cx="102" cy="70" r="3"/><circle cx="96" cy="64" r="3"/>
+        <circle cx="114" cy="58" r="3"/><circle cx="124" cy="46" r="3"/><circle cx="132" cy="38" r="3"/>
+        <circle cx="66" cy="128" r="3" opacity=".45"/><circle cx="110" cy="84" r="3" opacity=".45"/>
+      </g>
+      <text x="88" y="158" font-size="11" letter-spacing="1.2" fill="#8fb3a6" text-anchor="middle">Δ PREDICTION</text>
+      <text x="18" y="82" font-size="11" letter-spacing="1.2" fill="#8fb3a6" text-anchor="middle"
+            transform="rotate(-90 18 82)">Δ ATTRIBUTIONS</text>
+    </g>
+    <path d="M644 234 h24" stroke="#cfe4da" stroke-width="1.2" fill="none" marker-end="url(#mmp-arrow)" opacity=".8"/>
+
+    <text x="676" y="340" font-size="13" fill="#cfe4da" font-style="italic" font-family="'Libre Baskerville',Georgia,serif">One point per pair —</text>
+    <text x="676" y="360" font-size="13" fill="#cfe4da" font-style="italic" font-family="'Libre Baskerville',Georgia,serif">the tighter the line, the</text>
+    <text x="676" y="380" font-size="13" fill="#cfe4da" font-style="italic" font-family="'Libre Baskerville',Georgia,serif">better the explanation.</text>
+
+    <path d="M40 404 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="428" font-size="12" letter-spacing="1.1" fill="#8fb3a6">
+      THE CONSTANT PART SHOULD CONTRIBUTE NOTHING — HOW FAR IT STRAYS FROM ZERO IS ITSELF A WARNING SIGN
+    </text>
+  </g>
+</svg>

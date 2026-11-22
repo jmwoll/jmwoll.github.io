@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="lt">
+  <title id="lt">Life ring</title>
+  <g transform="rotate(-45 60 60)">
+    <!-- the ring body -->
+    <circle cx="60" cy="60" r="32" fill="none" stroke="#f4f4f0" stroke-width="24"/>
+    <!-- four coloured quadrants, laid over the pale ring -->
+    <circle cx="60" cy="60" r="32" fill="none" stroke="#b2704a" stroke-width="24"
+            stroke-dasharray="25.13 25.13"/>
+  </g>
+  <!-- outlines -->
+  <circle cx="60" cy="60" r="44" fill="none" stroke="#1d5e50" stroke-width="2.4"/>
+  <circle cx="60" cy="60" r="20" fill="none" stroke="#1d5e50" stroke-width="2.4"/>
+</svg>

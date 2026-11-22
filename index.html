@@ -225,6 +225,7 @@
     }
 
     .story {
+      position: relative;
       background: #fff;
       padding: clamp(28px, 4vw, 68px) clamp(20px, 4vw, 72px) clamp(40px, 5vw, 80px);
       min-width: 0;
@@ -369,6 +370,52 @@
       line-height: 1.6;
     }
     .infobox li { margin-bottom: 7px; }
+
+    /* note that sits out in the sidebar column, beside its paragraph */
+    .margin-note {
+      position: absolute;          /* top comes from its place in the flow */
+      left: 100%;
+      margin-left: clamp(20px, 3vw, 40px);
+      width: calc(340px - 2 * clamp(20px, 3vw, 40px));
+      padding-top: 6px;
+      border-top: 2px solid var(--accent-warm);
+    }
+    .margin-note img {
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 16px 0 14px;
+    }
+    .margin-note h4 {
+      margin: 0 0 10px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+    .margin-note p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.62;
+      color: var(--body-soft);
+    }
+    .margin-note b { font-weight: 400; color: var(--deep); }
+
+    /* once the sidebar is gone, fold it back into the text */
+    @media (max-width: 900px) {
+      .margin-note {
+        position: static;
+        width: auto;
+        margin: 36px 0;
+        padding: 22px 26px;
+        background: var(--pale);
+        border-top: 0;
+        border-left: 3px solid var(--accent-warm);
+      }
+      .margin-note img { margin-top: 0; }
+    }
 
     /* inline numbers */
     .stat-row {
@@ -666,6 +713,16 @@
         suggests, and the diagnostic sits in a place most people never look: the gap between the molecules the
         model trained on and the ones it has never seen.
       </p>
+
+      <aside class="margin-note">
+        <img src="assets/icon-lifesaver.svg" alt="">
+        <h4>Which one to fix</h4>
+        <p>
+          Separating those two confounding factors — <b>model quality</b> against <b>explanation quality</b> —
+          is what lets future research on XAI for molecules be steered in the right direction: for this endpoint,
+          is it the model that needs improving, or the explanation scheme?
+        </p>
+      </aside>
 
       <p>
         A support-vector model of experimental log P makes the point. Across whole molecules its attributions track

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 450" role="img" aria-labelledby="t7 d7">
+  <title id="t7">Ranking solvents removes the crystal lattice from the problem</title>
+  <desc id="d7">Predicting absolute solubility requires modelling the solid state. Comparing two solvents for the same solute leaves the solid unchanged, so it cancels out.</desc>
+
+  <defs>
+    <linearGradient id="rk-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="rk-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+    <marker id="rk-both" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9fd8c4"/>
+    </marker>
+    <marker id="rk-both-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9fd8c4"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="450" fill="url(#rk-bg)"/>
+  <rect width="880" height="450" fill="url(#rk-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">ASK AN EASIER QUESTION</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">The hardest term in solubility is the one that cancels when you only compare solvents.</text>
+
+    <!-- ================= absolute ================= -->
+    <g transform="translate(40 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#c98b63" stroke-width="1"/>
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#f3bd8c">HOW MUCH DISSOLVES?</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">the absolute question</text>
+
+      <!-- phase triangle -->
+      <g transform="translate(0 16)">
+        <path d="M86 108 H300" stroke="#7fa99b" stroke-width="1.4" fill="none" opacity=".8"/>
+        <path d="M300 108 L193 184" stroke="#7fa99b" stroke-width="1.4" fill="none" opacity=".8"/>
+        <path d="M86 108 L193 184" stroke="#e09060" stroke-width="2.6" fill="none"/>
+
+        <circle cx="86" cy="108" r="6" fill="#e09060"/>
+        <circle cx="300" cy="108" r="6" fill="#dce9e2"/>
+        <circle cx="193" cy="184" r="6" fill="#dce9e2"/>
+
+        <text x="86" y="94" font-size="12.5" letter-spacing="1.4" fill="#f3bd8c" text-anchor="middle">SOLID</text>
+        <text x="300" y="94" font-size="12.5" letter-spacing="1.4" fill="#a9c6ba" text-anchor="middle">SOLVENT</text>
+        <text x="193" y="204" font-size="12.5" letter-spacing="1.4" fill="#a9c6ba" text-anchor="middle">SOLUTION</text>
+
+        <text x="24" y="152" font-size="11.5" fill="#f3bd8c">break the</text>
+        <text x="24" y="168" font-size="11.5" fill="#f3bd8c">crystal apart</text>
+      </g>
+
+      <path d="M24 226 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="244" font-size="12.5" fill="#f3bd8c" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">Needs the lattice energy — or a melting point.</text>
+    </g>
+
+    <!-- ================= relative ================= -->
+    <g transform="translate(450 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#6fb49a" stroke-width="1"/>
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#9fd8c4">WHICH SOLVENT IS BETTER?</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">the relative question</text>
+
+      <g transform="translate(0 16)">
+        <!-- the solid, struck out -->
+        <circle cx="193" cy="100" r="6" fill="none" stroke="#5e8f81" stroke-width="1.4"/>
+        <text x="193" y="86" font-size="12.5" letter-spacing="1.4" fill="#6b9487" text-anchor="middle">SOLID</text>
+        <path d="M176 112 L210 88" stroke="#6b9487" stroke-width="1.6" fill="none"/>
+        <text x="228" y="105" font-size="11.5" fill="#6b9487">same both times</text>
+
+        <!-- two solutions -->
+        <circle cx="96" cy="176" r="6" fill="#dce9e2"/>
+        <circle cx="290" cy="176" r="6" fill="#dce9e2"/>
+        <text x="96" y="200" font-size="12.5" letter-spacing="1.4" fill="#a9c6ba" text-anchor="middle">SOLVENT A</text>
+        <text x="290" y="200" font-size="12.5" letter-spacing="1.4" fill="#a9c6ba" text-anchor="middle">SOLVENT B</text>
+
+        <path d="M112 176 H274" stroke="#9fd8c4" stroke-width="2"
+              marker-end="url(#rk-both)" marker-start="url(#rk-both-s)" fill="none"/>
+        <text x="193" y="164" font-size="14" fill="#9fd8c4" text-anchor="middle">Δ log S</text>
+      </g>
+
+      <path d="M24 226 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="244" font-size="12.5" fill="#9fd8c4" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">The solid drops out of the equation entirely.</text>
+    </g>
+
+    <path d="M40 396 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="424" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      It also unlocks data that only says “dissolved well” or “dissolved poorly”, with no number attached.
+    </text>
+  </g>
+</svg>

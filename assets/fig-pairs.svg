@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" role="img" aria-labelledby="t8 d8">
+  <title id="t8">From pairwise comparisons to a single ranked list</title>
+  <desc id="d8">Each solvent pair gives a predicted difference in solubility. The differences form a directed graph, whose forks are ties and cycles are contradictions, and averaging the signed edge weights collapses it into one ordered list.</desc>
+
+  <defs>
+    <linearGradient id="pr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="pr-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+    <marker id="pr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#cfe4da"/>
+    </marker>
+    <marker id="pr-tip" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9fd8c4"/>
+    </marker>
+    <marker id="pr-tip-w" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e09060"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="430" fill="url(#pr-bg)"/>
+  <rect width="880" height="430" fill="url(#pr-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">PAIRS, THEN AN ORDER</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">Predicting one comparison at a time is easy. Turning all the comparisons into one list is the fiddly part.</text>
+
+    <!-- ===== 1. pairwise predictions ===== -->
+    <g transform="translate(40 110)">
+      <rect width="232" height="196" rx="5" fill="#0f453c" opacity=".4" stroke="#5e9183" stroke-width="1"/>
+      <text x="18" y="28" font-size="11.5" letter-spacing="1.6" fill="#f0b27f">01</text>
+
+      <g font-size="12.5" fill="#dce9e2">
+        <text x="18" y="56">acetone</text><text x="104" y="56" fill="#8fb3a6">vs</text>
+        <text x="130" y="56">hexane</text><text x="196" y="56" fill="#9fd8c4">+1.8</text>
+
+        <text x="18" y="80">ethanol</text><text x="104" y="80" fill="#8fb3a6">vs</text>
+        <text x="130" y="80">acetone</text><text x="196" y="80" fill="#e09060">−0.4</text>
+
+        <text x="18" y="104">DMSO</text><text x="104" y="104" fill="#8fb3a6">vs</text>
+        <text x="130" y="104">ethanol</text><text x="196" y="104" fill="#9fd8c4">+0.9</text>
+
+        <text x="18" y="128">hexane</text><text x="104" y="128" fill="#8fb3a6">vs</text>
+        <text x="130" y="128">DMSO</text><text x="196" y="128" fill="#e09060">−2.1</text>
+      </g>
+
+      <text x="18" y="164" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">ONE PAIR AT A TIME</text>
+      <text x="18" y="182" font-size="11.5" fill="#a9c6ba">same solute, two solvents</text>
+    </g>
+    <path d="M278 208 h20" stroke="#cfe4da" stroke-width="1.2" fill="none" marker-end="url(#pr-arrow)" opacity=".75"/>
+
+    <!-- ===== 2. directed graph ===== -->
+    <g transform="translate(304 110)">
+      <rect width="272" height="196" rx="5" fill="#0f453c" opacity=".4" stroke="#5e9183" stroke-width="1"/>
+      <text x="18" y="28" font-size="11.5" letter-spacing="1.6" fill="#f0b27f">02</text>
+
+      <g transform="translate(26 32)">
+        <!-- edges -->
+        <path d="M34 72 L96 38" stroke="#9fd8c4" stroke-width="1.6" fill="none" marker-end="url(#pr-tip)"/>
+        <path d="M34 72 L96 100" stroke="#9fd8c4" stroke-width="1.6" fill="none" marker-end="url(#pr-tip)"/>
+        <path d="M112 38 L172 62" stroke="#9fd8c4" stroke-width="1.6" fill="none" marker-end="url(#pr-tip)"/>
+        <path d="M112 102 L172 76" stroke="#e09060" stroke-width="1.6" fill="none" marker-end="url(#pr-tip-w)"/>
+        <path d="M178 84 C 152 118, 82 112, 36 86" stroke="#e09060" stroke-width="1.6"
+              stroke-dasharray="5 4" fill="none" marker-end="url(#pr-tip-w)"/>
+
+        <!-- nodes -->
+        <g fill="#15584d" stroke="#cfe4da" stroke-width="1.4">
+          <circle cx="26" cy="78" r="12"/>
+          <circle cx="104" cy="32" r="12"/>
+          <circle cx="104" cy="106" r="12"/>
+          <circle cx="182" cy="70" r="12"/>
+        </g>
+      </g>
+
+      <text x="18" y="164" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">A DIRECTED GRAPH</text>
+      <text x="18" y="182" font-size="11.5" fill="#a9c6ba">forks are ties, loops are contradictions</text>
+    </g>
+    <path d="M582 208 h20" stroke="#cfe4da" stroke-width="1.2" fill="none" marker-end="url(#pr-arrow)" opacity=".75"/>
+
+    <!-- ===== 3. the ranking ===== -->
+    <g transform="translate(608 110)">
+      <rect width="232" height="196" rx="5" fill="#0f453c" opacity=".4" stroke="#5e9183" stroke-width="1"/>
+      <text x="18" y="28" font-size="11.5" letter-spacing="1.6" fill="#f0b27f">03</text>
+
+      <g transform="translate(18 40)">
+        <rect x="0" y="0" width="196" height="24" rx="2" fill="#15584d" stroke="#6fb49a" stroke-width="1"/>
+        <text x="12" y="17" font-size="12.5" fill="#f2f5f1">1 · DMSO</text>
+
+        <rect x="0" y="30" width="196" height="24" rx="2" fill="#115046" stroke="#4d7f72" stroke-width="1"/>
+        <text x="12" y="47" font-size="12.5" fill="#e3ece7">2 · acetone</text>
+
+        <rect x="0" y="60" width="196" height="24" rx="2" fill="#0f4a41" stroke="#4d7f72" stroke-width="1" opacity=".85"/>
+        <text x="12" y="77" font-size="12.5" fill="#cadbd3">3 · ethanol</text>
+
+        <rect x="0" y="90" width="196" height="24" rx="2" fill="#0e453d" stroke="#4d7f72" stroke-width="1" opacity=".7"/>
+        <text x="12" y="107" font-size="12.5" fill="#a9c6ba">4 · hexane</text>
+      </g>
+
+      <text x="18" y="164" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">ONE RANKED LIST</text>
+      <text x="18" y="182" font-size="11.5" fill="#a9c6ba">best solvent first</text>
+    </g>
+
+    <path d="M40 346 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="374" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      Averaging the signed edge weights at every node settles the ties and the loops — and beat the more elaborate
+    </text>
+    <text x="40" y="394" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      voting schemes it was tested against.
+    </text>
+  </g>
+</svg>

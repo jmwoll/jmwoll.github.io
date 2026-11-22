@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" role="img" aria-labelledby="t9 d9">
+  <title id="t9">The relative framing improves every featurization tested</title>
+  <desc id="d9">Spearman rank correlation on a held-out drug-like dataset. For fingerprints, COSMO-RS, learned embeddings and tight-binding features alike, the relative models score far above the absolute ones.</desc>
+
+  <defs>
+    <linearGradient id="rw-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="rw-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="880" height="430" fill="url(#rw-bg)"/>
+  <rect width="880" height="430" fill="url(#rw-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">IT IS THE FRAMING, NOT THE FEATURES</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">Rank correlation on a drug-like dataset the models never saw in training.</text>
+
+    <!-- legend -->
+    <g transform="translate(620 44)">
+      <rect x="0" y="0" width="14" height="14" rx="2" fill="#5c7d74"/>
+      <text x="22" y="12" font-size="12.5" letter-spacing=".6" fill="#a9c6ba">absolute</text>
+      <rect x="110" y="0" width="14" height="14" rx="2" fill="#9fd8c4"/>
+      <text x="132" y="12" font-size="12.5" letter-spacing=".6" fill="#a9c6ba">relative</text>
+    </g>
+
+    <!-- ===== axes ===== -->
+    <g>
+      <!-- gridlines: 0.2 / 0.4 / 0.6 / 0.8 -->
+      <g stroke="#7fa99b" stroke-width="1" opacity=".3" stroke-dasharray="4 5">
+        <path d="M92 277.5 H846"/>
+        <path d="M92 225 H846"/>
+        <path d="M92 172.5 H846"/>
+        <path d="M92 120 H846"/>
+      </g>
+      <g font-size="11.5" fill="#8fb3a6" text-anchor="end">
+        <text x="80" y="334">0</text>
+        <text x="80" y="281.5">0.2</text>
+        <text x="80" y="229">0.4</text>
+        <text x="80" y="176.5">0.6</text>
+        <text x="80" y="124">0.8</text>
+      </g>
+      <path d="M92 330 H846" stroke="#8fb3a6" stroke-width="1.2" fill="none"/>
+      <path d="M92 330 V116" stroke="#8fb3a6" stroke-width="1.2" fill="none"/>
+
+      <text x="46" y="226" font-size="11.5" letter-spacing="1.4" fill="#8fb3a6" text-anchor="middle"
+            transform="rotate(-90 46 226)">RANK CORRELATION</text>
+    </g>
+
+    <!-- ===== bars ===== -->
+    <!-- group 1: ECFP  0.296 / 0.740 -->
+    <g>
+      <rect x="140" y="252.3" width="52" height="77.7" fill="#5c7d74"/>
+      <text x="166" y="244" font-size="13" fill="#a9c6ba" text-anchor="middle">0.30</text>
+      <rect x="200" y="135.8" width="52" height="194.2" fill="#9fd8c4"/>
+      <text x="226" y="127" font-size="13" fill="#f2f5f1" text-anchor="middle">0.74</text>
+      <text x="196" y="352" font-size="13.5" letter-spacing="1.3" fill="#dce9e2" text-anchor="middle">FINGERPRINTS</text>
+    </g>
+
+    <!-- group 2: COSMO-RS  0.327 / 0.673 -->
+    <g>
+      <rect x="326" y="244.2" width="52" height="85.8" fill="#5c7d74"/>
+      <text x="352" y="236" font-size="13" fill="#a9c6ba" text-anchor="middle">0.33</text>
+      <rect x="386" y="153.4" width="52" height="176.6" fill="#9fd8c4"/>
+      <text x="412" y="145" font-size="13" fill="#f2f5f1" text-anchor="middle">0.67</text>
+      <text x="382" y="352" font-size="13.5" letter-spacing="1.3" fill="#dce9e2" text-anchor="middle">COSMO-RS</text>
+    </g>
+
+    <!-- group 3: CDDD  0.345 / 0.744 -->
+    <g>
+      <rect x="512" y="239.4" width="52" height="90.6" fill="#5c7d74"/>
+      <text x="538" y="231" font-size="13" fill="#a9c6ba" text-anchor="middle">0.35</text>
+      <rect x="572" y="134.7" width="52" height="195.3" fill="#9fd8c4"/>
+      <text x="598" y="126" font-size="13" fill="#f2f5f1" text-anchor="middle">0.74</text>
+      <text x="568" y="352" font-size="13.5" letter-spacing="1.3" fill="#dce9e2" text-anchor="middle">EMBEDDINGS</text>
+    </g>
+
+    <!-- group 4: xtb  0.322 / 0.736 -->
+    <g>
+      <rect x="698" y="245.5" width="52" height="84.5" fill="#5c7d74"/>
+      <text x="724" y="237" font-size="13" fill="#a9c6ba" text-anchor="middle">0.32</text>
+      <rect x="758" y="136.8" width="52" height="193.2" fill="#9fd8c4"/>
+      <text x="784" y="128" font-size="13" fill="#f2f5f1" text-anchor="middle">0.74</text>
+      <text x="754" y="352" font-size="13.5" letter-spacing="1.3" fill="#dce9e2" text-anchor="middle">TIGHT BINDING</text>
+    </g>
+
+    <path d="M40 382 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="410" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      Cheap approximate physics matches the expensive kind here — and both are beaten by how the question is posed.
+    </text>
+  </g>
+</svg>

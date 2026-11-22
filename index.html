@@ -496,6 +496,13 @@
           <span class="meta">Chemical Science, 2025 &middot; ranking nucleophiles and electrophiles</span>
         </a>
       </li>
+      <li>
+        <a href="#solvmate">
+          <span class="num">03</span>
+          <span class="t">Solvmate: Asking an Easier Question About Solubility</span>
+          <span class="meta">Digital Discovery, 2024 &middot; recommending solvents by ranking them</span>
+        </a>
+      </li>
     </ol>
   </nav>
 
@@ -922,6 +929,201 @@
       fast, data-driven pipeline: not by making the planner smarter, but by giving it a cheap second opinion
       grounded in energies rather than precedent, and a clear signal for when even that second opinion should be
       checked properly.
+    </p>
+  </section>
+  </section>
+
+  <!-- ================================================= Story 03 -->
+  <section class="story-block" id="solvmate">
+  <div class="layout">
+    <article class="story">
+      <p class="eyebrow">Story 03 &middot; Solubility</p>
+      <h2>Solvmate: Asking an Easier Question About Solubility</h2>
+      <p class="byline">Jan Wollschlaeger &middot; on a paper in <i>Digital Discovery</i>, 2024</p>
+
+      <p class="lede">
+        Somebody in a lab has a compound and a shelf of solvents, and needs to know which one will dissolve it.
+        It sounds like the kind of thing a model should have settled years ago. It hasn't — not because solubility
+        is unknowable, but because the standard way of asking the question drags in the single hardest quantity in
+        the whole problem.
+      </p>
+
+      <p>
+        This paper, written with Floriane Montanari, is mostly an argument that you can avoid asking for it. The
+        tool that came out of it, Solvmate, takes a solute and a list of solvents and hands back a ranking.
+      </p>
+
+      <h3>The part nobody can compute</h3>
+
+      <p>
+        Dissolving a crystalline solid is two things at once: the solvent has to be worth entering, and the crystal
+        has to be worth leaving. The second half is the problem. It depends on how the molecules are stacked in the
+        lattice, in detail, and predicting that is still largely out of reach — melting points, a common proxy,
+        are themselves predicted with errors of 40 to 50 °C against an experimental error under 5.
+      </p>
+
+      <p>
+        So models of absolute solubility either need an experimental melting point measured for the exact compound
+        you are asking about, or they absorb that whole uncertainty into their error bars. Either way it is the
+        dominant term.
+      </p>
+
+      <p>
+        The observation this work turns on is that a chemist choosing a solvent does not need the absolute number.
+        They need to know which solvent is better. And if the solute stays fixed while only the solvent changes,
+        the crystal is the same on both sides of the comparison — so it cancels.
+      </p>
+
+      <figure>
+        <img src="assets/fig-ranking.svg" alt="Two phase diagrams. In the absolute question, solid, solvent and solution all have to be modelled, including breaking the crystal apart. In the relative question only two solutions are compared, and the solid cancels out.">
+        <figcaption>
+          <b>The reframing</b>
+          There is a second, quieter benefit. Once you only need comparisons, datasets that merely record
+          &ldquo;dissolved well&rdquo; or &ldquo;dissolved poorly&rdquo; become usable training data, and a lot of
+          real solubility data looks exactly like that.
+        </figcaption>
+      </figure>
+
+      <h3>From pairs to a list</h3>
+
+      <p>
+        In practice the model never predicts a solubility at all. It is shown the same solute in two different
+        solvents and predicts the difference. Every pair of solvents gives one such comparison, which makes the
+        answer a directed graph rather than a list: solvents are nodes, and each predicted difference is an arrow
+        pointing from worse to better.
+      </p>
+
+      <p>
+        Collapsing that graph into a ranking is where it gets fiddly. A fork means two solvents tie; a cycle means
+        the model has contradicted itself, preferring A to B, B to C and C back to A. What worked was pleasingly
+        plain: average the signed edge weights at each node and sort. Both of the more sophisticated voting schemes
+        we tested against it did worse.
+      </p>
+
+      <figure>
+        <img src="assets/fig-pairs.svg" alt="Pairwise solubility differences become a directed graph of solvents, which is then collapsed into a single ranked list from best solvent to worst.">
+        <figcaption>
+          <b>The machinery</b>
+          Predicting a comparison is a much easier learning problem than predicting a value, but the comparisons
+          then have to be made to agree with one another.
+        </figcaption>
+      </figure>
+
+      <h3>The framing does more than the features</h3>
+
+      <p>
+        The interesting result is how little the rest of the design mattered by comparison. We tried sparse
+        fingerprints, learned embeddings, full COSMO-RS calculations, and a cheap semi-empirical featurization
+        built on extended tight binding — and ran each one both ways, absolute and relative.
+      </p>
+
+      <p>
+        Every single featurization improved under the relative framing, in every evaluation split. On the test
+        that matters most — training on small, public, low-molecular-weight compounds and then ranking solvents
+        for genuinely drug-like molecules — the absolute models land around 0.3 in rank correlation, barely above
+        the trivial baseline of sorting solvents by how good they generally are. The relative versions of the same
+        models reach roughly 0.74.
+      </p>
+
+      <figure>
+        <img src="assets/fig-relative-wins.svg" alt="Bar chart of rank correlation on a held-out drug-like dataset. Fingerprints go from 0.30 to 0.74, COSMO-RS from 0.33 to 0.67, embeddings from 0.35 to 0.74 and tight-binding features from 0.32 to 0.74 when moving from absolute to relative models.">
+        <figcaption>
+          <b>Absolute against relative</b>
+          Worth noting the third pair: the expensive, physics-heavy COSMO-RS features do not beat the cheap
+          approximate ones here. How the question is posed dominates what you feed the model.
+        </figcaption>
+      </figure>
+
+      <ul class="stat-row">
+        <li><b>0.3 &rarr; 0.74</b><span>rank correlation, absolute to relative, on unseen drug-like compounds</span></li>
+        <li><b>4 of 4</b><span>featurizations improved under the relative framing</span></li>
+        <li><b>0</b><span>melting points or crystal structures required</span></li>
+        <li><b>23</b><span>solvent environments each molecule is profiled against</span></li>
+      </ul>
+
+      <h3>What it gets wrong</h3>
+
+      <p>
+        The failures are worth stating plainly, because they follow from the same design. Sorting solvents by their
+        general reputation — DMSO near the top, hexane near the bottom — is already a decent ranking, and the model
+        leans on that prior more than it should. Structurally similar solvents get confused with one another:
+        shown diclofenac it correctly puts acetophenone, acetone and ethyl acetate on top, then muddles the order
+        of the alcohols, which are protic and hydrogen-bonding and genuinely hard. Salts go wrong too, for the
+        unglamorous reason that there were no ionic compounds in the training data.
+      </p>
+
+      <p>
+        There is also a measurement-floor problem that applies to any solubility model. Asking it to order two
+        solvents whose true solubilities differ by less than the experimental error is asking it to guess. Filter
+        those pairs out and performance climbs steeply up to a threshold of about one log unit — which is exactly
+        where reported experimental errors sit. The headline numbers above are the unfiltered, pessimistic ones.
+      </p>
+
+      <p class="pull">
+        Much of the difficulty in a prediction problem lives in how it was posed, not in the model that answers it.
+      </p>
+    </article>
+
+    <aside class="sidebar">
+      <section>
+        <h4>The paper</h4>
+        <p class="paper">
+          <em>Solvmate</em>
+          A hybrid physical/ML approach to solvent recommendation leveraging a rank-based problem framework<br>
+          <span>
+            Wollschläger, J.; Montanari, F.<br>
+            <i>Digital Discovery</i> <b>2024</b>, <i>3</i>, 1749.<br>
+            <a href="https://doi.org/10.1039/d4dd00138a">10.1039/d4dd00138a</a>
+          </span>
+        </p>
+        <p class="paper">
+          <span>Published open access under CC-BY-NC 4.0.</span>
+        </p>
+      </section>
+
+      <section>
+        <h4>The code</h4>
+        <ul>
+          <li>
+            <b>Bayer-Group/solvmate</b>
+            The recommender, the web app and the trained models —
+            <a href="https://github.com/Bayer-Group/solvmate">on GitHub</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>In short</h4>
+        <ul>
+          <li>
+            <b>The question</b>
+            Which solvent on the shelf will dissolve this compound best?
+          </li>
+          <li>
+            <b>The method</b>
+            Predict differences between solvent pairs, then sort the resulting graph.
+          </li>
+          <li>
+            <b>The payoff</b>
+            No melting point, no crystal structure, and qualitative data becomes usable.
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <section class="closing">
+    <h3>Why this matters</h3>
+    <p>
+      It is tempting to read this as a trick — sidestepping a hard quantity rather than computing it. But the
+      sidestep is the point. The absolute number was never what the person at the bench needed; it was an artefact
+      of how the problem had always been written down, and it happened to carry the error of the one thing nobody
+      can predict well.
+    </p>
+    <p>
+      The same move is available more often than it gets used. Where a model keeps running into a term it cannot
+      estimate, it is worth checking whether the decision downstream actually depends on that term — or whether a
+      comparison, a ranking, or an ordering would serve just as well and cost far less to get right.
     </p>
   </section>
   </section>

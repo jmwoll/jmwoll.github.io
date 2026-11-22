@@ -274,6 +274,10 @@
       line-height: 1.72;
       color: #27332f;
     }
+    .lede + .lede { margin-top: -4px; }
+
+    /* letters that spell out an acronym */
+    .acro b { font-weight: 700; color: var(--accent); }
 
     .story h3 {
       margin: 54px 0 16px;
@@ -515,11 +519,18 @@
       <p class="byline">Jan Wollschlaeger &middot; on two papers in <i>Digital Discovery</i>, 2026</p>
 
       <p class="lede">
-        A machine learning model predicts that your compound is too lipophilic. Alongside the number comes a
-        picture: the molecule, with its atoms washed in red and blue, showing which parts pushed the prediction
-        up and which pulled it down. It is a persuasive image. A chemist can act on it — swap that group, keep
-        this ring. But the picture carries no error bar, and nothing about it tells you whether the model was
-        reasoning about chemistry or about a coincidence in its training data.
+        Explainable AI for molecules grows out of a straightforward wish: to make the predictions of a machine
+        learning model transparent to the person who has to rely on them. Colleagues at Bayer built a tool for
+        exactly that need — <a href="https://doi.org/10.1186/s13321-022-00600-z">CIME</a>, the
+        <span class="acro"><b>C</b>hem<b>I</b>nformatics <b>M</b>odel <b>E</b>xplorer</span>.
+      </p>
+
+      <p class="lede">
+        In practice, this means: a machine learning model predicts that your compound is too lipophilic. Alongside
+        the number comes a picture — the molecule, with its atoms washed in red and blue, showing which parts
+        pushed the prediction up and which pulled it down. It is a persuasive image. A chemist can act on it: swap
+        that group, keep this ring. But the picture carries no error bar, and nothing about it tells you whether
+        the model was reasoning about chemistry or about a coincidence in its training data.
       </p>
 
       <p>
@@ -674,6 +685,20 @@
         </p>
         <p class="paper">
           <span>Both published open access under CC-BY 4.0.</span>
+        </p>
+      </section>
+
+      <section>
+        <h4>Also referenced</h4>
+        <p class="paper">
+          <em>ChemInformatics Model Explorer (CIME)</em>
+          Exploratory analysis of chemical model explanations<br>
+          <span>
+            Humer, C.; Heberle, H.; Montanari, F.; Wolf, T.; Huber, F.;
+            Henderson, R.; Heinrich, J.; Streit, M.<br>
+            <i>Journal of Cheminformatics</i> <b>2022</b>, <i>14</i>, 21.<br>
+            <a href="https://doi.org/10.1186/s13321-022-00600-z">10.1186/s13321-022-00600-z</a>
+          </span>
         </p>
       </section>
 

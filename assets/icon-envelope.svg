@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="et">
+  <title id="et">Envelope</title>
+  <!-- body -->
+  <rect x="12" y="30" width="96" height="60" rx="5" fill="#f4f4f0" stroke="#1d5e50" stroke-width="2.8"/>
+  <!-- side creases -->
+  <g fill="none" stroke="#1d5e50" stroke-width="2.2" stroke-linecap="round" opacity=".4">
+    <path d="M17 85 L47 59"/>
+    <path d="M103 85 L73 59"/>
+  </g>
+  <!-- the open flap, filled so it carries at small sizes -->
+  <path d="M13.6 32 H106.4 L60 68 Z" fill="#b2704a"/>
+  <path d="M13.6 32 L60 68 L106.4 32" fill="none" stroke="#1d5e50" stroke-width="2.8"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

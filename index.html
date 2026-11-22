@@ -340,6 +340,36 @@
       figcaption { position: sticky; left: 0; max-width: 100%; }
     }
 
+    /* aside panel inside a story */
+    .infobox {
+      margin: 46px 0;
+      padding: 26px clamp(20px, 2.4vw, 32px);
+      background: var(--pale);
+      border-left: 3px solid var(--accent);
+    }
+    .infobox h4 {
+      margin: 0 0 14px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+    .infobox p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+    .infobox p:last-child { margin-bottom: 0; }
+    .infobox ul {
+      margin: 0 0 14px;
+      padding-left: 20px;
+      font-size: 15.5px;
+      line-height: 1.6;
+    }
+    .infobox li { margin-bottom: 7px; }
+
     /* inline numbers */
     .stat-row {
       display: flex;
@@ -535,9 +565,10 @@
 
       <p>
         That gap is the subject of two papers I worked on with Kerrin Janssen, Jonny Proppe and Andreas Göller,
-        published in <i>Digital Discovery</i> earlier this year. They introduce <strong>WISP</strong> — a Workflow
-        for Interpretability Scoring using matched molecular Pairs — which turns the question "can I trust this
-        heatmap?" from a matter of taste into a measurement.
+        published in <i>Digital Discovery</i> earlier this year. We introduce <strong>WISP</strong> — a Workflow
+        for Interpretability Scoring using matched molecular Pairs — which aims to provide a more rational
+        approach towards answering the question whether such atom attribution heatmaps can be trusted for a
+        particular molecular property endpoint under consideration.
       </p>
 
       <h3>One change at a time</h3>
@@ -597,6 +628,28 @@
           runs from a dataset of SMILES strings and one measured property.
         </figcaption>
       </figure>
+
+      <aside class="infobox">
+        <h4>Not just a workflow — a web app</h4>
+        <p>
+          None of this helps anyone if it only runs as a notebook. So the framework also ships a web application:
+          a one-stop solution that takes a dataset in, trains a model, returns predictions, and produces the
+          heatmaps and the explainability scoring on top — without writing any code. It is the part that makes
+          WISP usable in practice rather than reproducible in principle.
+        </p>
+        <p>
+          The model side is deliberately broad, so the scoring can be applied to whatever architecture suits the
+          endpoint. It covers, among others:
+        </p>
+        <ul>
+          <li>message-passing graph neural networks, via <b>chemprop</b>;</li>
+          <li>histogram gradient boosting and random forests over <b>RDKit molecular descriptors</b>.</li>
+        </ul>
+        <p>
+          The <a href="https://github.com/kerjans/ml-XAI">repository</a> lists the architectures and featurizations
+          currently supported, and hosts the app alongside the code.
+        </p>
+      </aside>
 
       <h3>The uncomfortable finding</h3>
 

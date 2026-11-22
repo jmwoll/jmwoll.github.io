@@ -638,16 +638,23 @@
           WISP usable in practice rather than reproducible in principle.
         </p>
         <p>
-          The model side is deliberately broad, so the scoring can be applied to whatever architecture suits the
-          endpoint. It covers, among others:
+          Because the scoring is model-agnostic, the search underneath it can be wide. The featurizations currently
+          covered are:
         </p>
         <ul>
-          <li>message-passing graph neural networks, via <b>chemprop</b>;</li>
-          <li>histogram gradient boosting and random forests over <b>RDKit molecular descriptors</b>.</li>
+          <li><b>Morgan fingerprints</b> — radius 2, 2048 bits;</li>
+          <li><b>RDKit path fingerprints</b> — paths up to seven bonds;</li>
+          <li><b>MACCS structural keys</b>;</li>
+          <li>the full set of <b>RDKit molecular descriptors</b>;</li>
+          <li>learned graph representations straight from SMILES, via <b>chemprop</b>.</li>
         </ul>
         <p>
-          The <a href="https://github.com/kerjans/ml-XAI">repository</a> lists the architectures and featurizations
-          currently supported, and hosts the app alongside the code.
+          Those are paired against linear, LASSO and Bayesian ridge regression, support vector machines, random
+          forests, gradient boosting in both its plain and histogram-based flavours, Gaussian processes, small
+          neural networks and chemprop's message-passing graph network — with the best combination picked by
+          cross-validated error. Classification endpoints get the same treatment. The
+          <a href="https://github.com/kerjans/ml-XAI">repository</a> has the current list, and hosts the app
+          alongside the code.
         </p>
       </aside>
 

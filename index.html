@@ -154,7 +154,69 @@
     }
     @media (max-width: 860px) { .header-link { display: none; } }
 
+    /* ======================================================= Contents */
+    .contents {
+      padding: clamp(26px, 3vw, 40px) clamp(20px, 4vw, 72px);
+      background: #11463d;
+      color: var(--ink);
+    }
+    .contents h2 {
+      margin: 0 0 22px;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: #8fb3a6;
+    }
+    .contents ol {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .contents a {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 18px;
+      align-items: baseline;
+      height: 100%;
+      padding: 18px 22px;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, .16);
+      transition: background .2s ease, border-color .2s ease;
+    }
+    .contents a:hover {
+      background: rgba(255, 255, 255, .07);
+      border-color: rgba(255, 255, 255, .34);
+    }
+    .contents .num {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: .18em;
+      color: #e0a677;
+    }
+    .contents .t {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.32;
+      letter-spacing: .03em;
+    }
+    .contents .meta {
+      grid-column: 2;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+    }
+
     /* ======================================================= Layout */
+    .story-block { scroll-margin-top: 0; }
+
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 340px;
@@ -414,9 +476,30 @@
       </div>
     </div>
 
-    <a class="header-link" href="#papers">The papers <span>&rsaquo;</span></a>
+    <a class="header-link" href="#contents">The stories <span>&rsaquo;</span></a>
   </header>
 
+  <nav class="contents" id="contents" aria-label="Stories on this page">
+    <h2>On this page</h2>
+    <ol>
+      <li>
+        <a href="#wisp">
+          <span class="num">01</span>
+          <span class="t">Explainable AI for Molecules: The WISP Framework</span>
+          <span class="meta">Digital Discovery, 2026 &middot; can you trust a molecular heatmap?</span>
+        </a>
+      </li>
+      <li>
+        <a href="#esnuel">
+          <span class="num">02</span>
+          <span class="t">Which Atom Reacts? Reactivity at Machine-Learning Speed</span>
+          <span class="meta">Chemical Science, 2025 &middot; ranking nucleophiles and electrophiles</span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  <section class="story-block" id="wisp">
   <div class="layout">
     <!-- ================================================= Story -->
     <article class="story">
@@ -562,7 +645,7 @@
 
     <!-- ================================================= Sidebar -->
     <aside class="sidebar">
-      <section id="papers">
+      <section>
         <h4>The papers</h4>
         <p class="paper">
           <em>When machine learning models learn chemistry I</em>
@@ -633,6 +716,214 @@
       transformations it has never properly seen, which parts of your dataset need filling in, whether its advice
       is worth following at all.
     </p>
+  </section>
+  </section>
+
+  <!-- ================================================= Story 02 -->
+  <section class="story-block" id="esnuel">
+  <div class="layout">
+    <article class="story">
+      <p class="eyebrow">Story 02 &middot; Reactivity prediction</p>
+      <h2>Which Atom Reacts? Reactivity at Machine-Learning Speed</h2>
+      <p class="byline">Jan Wollschlaeger &middot; on a paper in <i>Chemical Science</i>, 2025</p>
+
+      <p class="lede">
+        A retrosynthesis tool hands you a route. Step one couples an amine onto a scaffold — except the molecule
+        has two amines, and the tool has no opinion about which one. A chemist glances at it and knows. The model
+        has only ever seen which reactions were written down, not why the other site stayed quiet. Chemical
+        selectivity is where computer-aided synthesis planning still quietly falls over.
+      </p>
+
+      <p>
+        This paper, with Nicolai Ree, Andreas Göller and Jan Jensen, is about giving those tools a number to reason
+        with — a per-atom measure of how nucleophilic or electrophilic a site is, cheap enough to compute for every
+        step of every candidate route.
+      </p>
+
+      <h3>A ruler for reactivity</h3>
+
+      <p>
+        Chemistry has had such rulers since Mayr and co-workers built their reactivity scales, which place
+        nucleophiles and electrophiles on axes spanning fourteen orders of magnitude in rate. The catch is that
+        measuring those parameters is laborious, and hardest at exactly the extremes you care about. Mayr's
+        database, after decades of work, holds a few hundred electrophiles and about thirteen hundred nucleophiles
+        — a rounding error against the space a drug discovery project explores.
+      </p>
+
+      <p>
+        The computational stand-in is disarmingly literal: offer the site a tiny probe and measure how much energy
+        comes back. Bind a methyl cation to a nucleophilic site and you get its <strong>methyl cation affinity</strong>;
+        bind a methyl anion to an electrophilic site and you get its <strong>methyl anion affinity</strong>. Earlier
+        work had shown these track Mayr's experimental scales once solvent effects are accounted for, and our
+        group's preceding paper automated the quantum chemistry end to end.
+      </p>
+
+      <figure>
+        <img src="assets/fig-affinity.svg" alt="Two energy diagrams. A nucleophilic site binds a methyl cation and the energy released defines its methyl cation affinity; an electrophilic site binds a methyl anion, defining its methyl anion affinity.">
+        <figcaption>
+          <b>What gets measured</b>
+          Each candidate site in a molecule is scored separately, which is what makes the numbers useful: they rank
+          the sites within one molecule against each other, not just molecule against molecule.
+        </figcaption>
+      </figure>
+
+      <h3>Learning the quantum answer</h3>
+
+      <p>
+        Two minutes of quantum chemistry per molecule is fine for a study and useless inside a search over
+        thousands of candidate routes. So we ran the full workflow over roughly 50,000 neutral, drug-like molecules
+        and learned the result: around 650,000 nucleophilic sites and 530,000 electrophilic ones, each with a
+        quantum-calculated affinity.
+      </p>
+
+      <p>
+        What the model sees of an atom is deliberately small — the partial charges on its neighbours out to three
+        bonds, sorted into a fixed order by a modified version of the Cahn–Ingold–Prelog priority rules, giving
+        53 numbers. A gradient boosting model maps those to the affinity, reaching Pearson correlations of
+        <strong>0.97</strong> and <strong>0.95</strong> against the quantum values on held-out sites, with typical
+        errors around 12 and 15 kJ mol⁻¹. A molecule that took about two minutes on eight cores now takes
+        <strong>0.36 seconds on one</strong>.
+      </p>
+
+      <figure>
+        <img src="assets/fig-fastpath.svg" alt="Three stages: the site's neighbourhood described by partial charges out to three bonds, a 53-number fingerprint, and a gradient boosting model predicting in 0.36 seconds per molecule. A second model decides whether the prediction is confident or should be sent back to the quantum workflow.">
+        <figcaption>
+          <b>The fast path</b>
+          A companion random forest reports the spread across its own trees, which turns out to be a well-behaved
+          stand-in for the error — the calibration between predicted spread and actual error is near-perfect.
+        </figcaption>
+      </figure>
+
+      <h3>Knowing when to stop trusting it</h3>
+
+      <p>
+        That uncertainty estimate is not decoration. A model trained on neutral, drug-like molecules has a domain,
+        and the honest test is what happens outside it. Run these models on a deliberately awkward non-drug-like
+        set full of protonated and deprotonated small molecules and the correlation for methyl cation affinities
+        sits at 0.68 — poor, and exactly what you would expect.
+      </p>
+
+      <p>
+        The useful part is that the model knows. Discard the sites it flags as uncertain and that 0.68 climbs to
+        <strong>0.99</strong>; the electrophilic side goes from 0.82 to 0.95. On the main test set, routing the
+        least confident quarter of sites back to the quantum workflow catches 93% of the errors above
+        100 kJ mol⁻¹. The result is less a replacement for quantum chemistry than a triage layer in front of it.
+      </p>
+
+      <p class="pull">
+        A fast model that knows where its own edges are can be trusted in places a more accurate one cannot.
+      </p>
+
+      <h3>Where it pays off</h3>
+
+      <p>
+        The first application is the one that motivated it. Given a proposed reaction step, compute the affinities
+        of every candidate site and check that the site the route assumes will react is in fact the most reactive
+        one. On the awkward cases — where published models get it wrong, or where the outcome is obvious to a
+        chemist but not inferable from reaction data — the numbers land correctly.
+      </p>
+
+      <figure>
+        <img src="assets/fig-selectivity.svg" alt="Three reactions, each with two competing sites and their affinities: aryl chloride 252 against aryl bromide 245, primary amine 487 against secondary amine 433, aldehyde 168 against ketone 140. In each case the larger value is the site that reacted.">
+        <figcaption>
+          <b>Three calls</b>
+          In the Suzuki example a trained sequence model had ranked the bromide as the likelier product; the
+          recorded outcome, and the affinities, say chloride.
+        </figcaption>
+      </figure>
+
+      <p>
+        Applied to a whole route, it becomes a filter. A published retrosynthesis of ciprofloxacin turns out to have
+        a first step where the most reactive nucleophile and electrophile are both on the same fragment, which
+        would have it react with itself rather than the intended partner. Swapping the order of the two steps fixes
+        it — and the reordered second step is reported in the literature at around 90% yield.
+      </p>
+
+      <ul class="stat-row">
+        <li><b>1.2M</b><span>atomic sites with quantum-calculated affinities</span></li>
+        <li><b>0.36 s</b><span>per molecule, down from about two minutes</span></li>
+        <li><b>0.97</b><span>correlation with the quantum answer it replaces</span></li>
+        <li><b>0.99</b><span>correlation out of domain, once flagged sites are removed</span></li>
+      </ul>
+
+      <p>
+        The second application is quieter but closer to the clinic. The same electrophilicity numbers predict how
+        fast esters and carbamates hydrolyse — a real liability in a drug candidate. Against measured half-lives
+        for 29 compounds the machine learning model reaches a correlation of −0.87, slightly <em>better</em> than
+        the quantum calculations it was trained on. Not because it is more accurate, but because half of those
+        quantum calculations fell apart: the molecules rearranged during geometry optimisation and had to be
+        thrown out. The learned model, never actually doing the chemistry, simply returns an answer for all of them.
+      </p>
+    </article>
+
+    <aside class="sidebar">
+      <section>
+        <h4>The paper</h4>
+        <p class="paper">
+          <em>Atom-based machine learning for nucleophilicity and electrophilicity</em>
+          With applications to retrosynthesis and chemical stability<br>
+          <span>
+            Ree, N.; Wollschläger, J. M.; Göller, A. H.; Jensen, J. H.<br>
+            <i>Chemical Science</i> <b>2025</b>, <i>16</i>, 5676.<br>
+            <a href="https://doi.org/10.1039/d4sc07297a">10.1039/d4sc07297a</a>
+          </span>
+        </p>
+        <p class="paper">
+          <span>Published open access under CC-BY 4.0.</span>
+        </p>
+      </section>
+
+      <section>
+        <h4>The code</h4>
+        <ul>
+          <li>
+            <b>jensengroup/ESNUEL_ML</b>
+            Models, data and training code, MIT licensed —
+            <a href="https://github.com/jensengroup/ESNUEL_ML">on GitHub</a>
+          </li>
+          <li>
+            <b>esnuel.org</b>
+            Paste a SMILES string and get the sites back —
+            <a href="https://www.esnuel.org">web app</a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h4>In short</h4>
+        <ul>
+          <li>
+            <b>The question</b>
+            Of several plausible sites on a molecule, which one actually reacts?
+          </li>
+          <li>
+            <b>The method</b>
+            Learn quantum-calculated methyl affinities from the charges around each atom.
+          </li>
+          <li>
+            <b>The payoff</b>
+            Selectivity checks cheap enough to run over every step of a proposed route.
+          </li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  <section class="closing">
+    <h3>Why this matters</h3>
+    <p>
+      Data-driven synthesis planning learns from reactions that were recorded, and reactions get recorded when they
+      work. The negative space — the site that could have reacted and didn't, the route nobody published because it
+      gave a mess — is largely absent from the training data, which is precisely why selectivity is where these
+      tools struggle.
+    </p>
+    <p>
+      Physics does not have that blind spot. What this work buys is a way to put a thin layer of it back into a
+      fast, data-driven pipeline: not by making the planner smarter, but by giving it a cheap second opinion
+      grounded in energies rather than precedent, and a clear signal for when even that second opinion should be
+      checked properly.
+    </p>
+  </section>
   </section>
 
   <footer class="site-foot">

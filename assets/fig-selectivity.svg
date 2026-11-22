@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" role="img" aria-labelledby="t6 d6">
+  <title id="t6">Three reactions where the more reactive site is not the obvious one</title>
+  <desc id="d6">In each case two candidate sites compete. The site with the larger affinity is the one that reacts, and in each example it matches the recorded outcome.</desc>
+
+  <defs>
+    <linearGradient id="sel-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="sel-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+  </defs>
+
+  <rect width="880" height="420" fill="url(#sel-bg)"/>
+  <rect width="880" height="420" fill="url(#sel-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">WHICH SITE REACTS?</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">Two candidates, one number each. The larger affinity wins — and matches what the chemistry actually did.</text>
+
+    <!-- ============ card 1 ============ -->
+    <g transform="translate(40 108)">
+      <rect width="254" height="214" rx="5" fill="#0f453c" opacity=".42" stroke="#5e9183" stroke-width="1"/>
+      <text x="20" y="32" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">SUZUKI COUPLING</text>
+      <text x="20" y="50" font-size="11" letter-spacing="1.2" fill="#f0b27f">MOST ELECTROPHILIC SITE · MAA</text>
+
+      <g transform="translate(20 70)">
+        <rect x="0" y="0" width="214" height="44" rx="3" fill="#15584d" stroke="#6fb49a" stroke-width="1.2"/>
+        <text x="14" y="27" font-size="13.5" fill="#f2f5f1">aryl chloride</text>
+        <text x="146" y="27" font-size="16" fill="#9fd8c4">252</text>
+        <path d="M196 20 l5 6 l10 -13" fill="none" stroke="#9fd8c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="0" y="54" width="214" height="44" rx="3" fill="#0d3f38" stroke="#4d7f72" stroke-width="1" opacity=".8"/>
+        <text x="14" y="81" font-size="13.5" fill="#a9c6ba">aryl bromide</text>
+        <text x="146" y="81" font-size="16" fill="#8fb3a6">245</text>
+      </g>
+
+      <text x="20" y="196" font-size="11.5" fill="#8fb3a6">kJ mol⁻¹ · a trained model said bromide</text>
+    </g>
+
+    <!-- ============ card 2 ============ -->
+    <g transform="translate(313 108)">
+      <rect width="254" height="214" rx="5" fill="#0f453c" opacity=".42" stroke="#5e9183" stroke-width="1"/>
+      <text x="20" y="32" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">N-Cbz PROTECTION</text>
+      <text x="20" y="50" font-size="11" letter-spacing="1.2" fill="#9fd8c4">MOST NUCLEOPHILIC SITE · MCA</text>
+
+      <g transform="translate(20 70)">
+        <rect x="0" y="0" width="214" height="44" rx="3" fill="#15584d" stroke="#6fb49a" stroke-width="1.2"/>
+        <text x="14" y="27" font-size="13.5" fill="#f2f5f1">primary amine</text>
+        <text x="146" y="27" font-size="16" fill="#9fd8c4">487</text>
+        <path d="M196 20 l5 6 l10 -13" fill="none" stroke="#9fd8c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="0" y="54" width="214" height="44" rx="3" fill="#0d3f38" stroke="#4d7f72" stroke-width="1" opacity=".8"/>
+        <text x="14" y="81" font-size="13.5" fill="#a9c6ba">secondary amine</text>
+        <text x="146" y="81" font-size="16" fill="#8fb3a6">433</text>
+      </g>
+
+      <text x="20" y="196" font-size="11.5" fill="#8fb3a6">kJ mol⁻¹ · a comfortable margin</text>
+    </g>
+
+    <!-- ============ card 3 ============ -->
+    <g transform="translate(586 108)">
+      <rect width="254" height="214" rx="5" fill="#0f453c" opacity=".42" stroke="#5e9183" stroke-width="1"/>
+      <text x="20" y="32" font-size="13.5" letter-spacing="1.5" fill="#f2f5f1">NaBH₄ REDUCTION</text>
+      <text x="20" y="50" font-size="11" letter-spacing="1.2" fill="#f0b27f">MOST ELECTROPHILIC SITE · MAA</text>
+
+      <g transform="translate(20 70)">
+        <rect x="0" y="0" width="214" height="44" rx="3" fill="#15584d" stroke="#6fb49a" stroke-width="1.2"/>
+        <text x="14" y="27" font-size="13.5" fill="#f2f5f1">aldehyde</text>
+        <text x="146" y="27" font-size="16" fill="#9fd8c4">168</text>
+        <path d="M196 20 l5 6 l10 -13" fill="none" stroke="#9fd8c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <rect x="0" y="54" width="214" height="44" rx="3" fill="#0d3f38" stroke="#4d7f72" stroke-width="1" opacity=".8"/>
+        <text x="14" y="81" font-size="13.5" fill="#a9c6ba">ketone</text>
+        <text x="146" y="81" font-size="16" fill="#8fb3a6">140</text>
+      </g>
+
+      <text x="20" y="196" font-size="11.5" fill="#8fb3a6">kJ mol⁻¹ · obvious to a chemist</text>
+    </g>
+
+    <path d="M40 358 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="386" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      Cheap enough to run over every step of a proposed synthesis, and flag the ones where the wrong site would win.
+    </text>
+  </g>
+</svg>

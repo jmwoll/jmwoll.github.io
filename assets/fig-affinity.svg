@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 450" role="img" aria-labelledby="t4 d4">
+  <title id="t4">Nucleophilicity and electrophilicity measured as methyl affinities</title>
+  <desc id="d4">A nucleophilic site is scored by the energy released when a methyl cation binds to it; an electrophilic site by the energy released when a methyl anion binds. Larger affinities mean more reactive sites.</desc>
+
+  <defs>
+    <linearGradient id="af-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17524a"/>
+      <stop offset="60%" stop-color="#1d5e50"/>
+      <stop offset="100%" stop-color="#2f6e5c"/>
+    </linearGradient>
+    <pattern id="af-hex" width="42" height="72.75" patternUnits="userSpaceOnUse">
+      <path d="M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75"
+            fill="none" stroke="#dff5ec" stroke-width=".8" opacity=".07"/>
+    </pattern>
+    <marker id="af-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#cfe4da"/>
+    </marker>
+    <marker id="af-arrow-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9fd8c4"/>
+    </marker>
+    <marker id="af-arrow-w" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#f3bd8c"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="450" fill="url(#af-bg)"/>
+  <rect width="880" height="450" fill="url(#af-hex)"/>
+
+  <g font-family="'Josefin Sans',system-ui,sans-serif">
+    <text x="40" y="54" font-size="24" letter-spacing="2.6" fill="#f2f5f1">PUT A NUMBER ON REACTIVITY</text>
+    <text x="40" y="80" font-size="14.5" letter-spacing=".8" fill="#a9c6ba">Offer an atom a small probe and measure the energy released when it binds.</text>
+
+    <!-- ===================== nucleophilicity card ===================== -->
+    <g transform="translate(40 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#6fb49a" stroke-width="1"/>
+
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#9fd8c4">NUCLEOPHILICITY</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">a site willing to give electrons away</text>
+
+      <!-- energy diagram -->
+      <g>
+        <text x="34" y="88" font-size="11.5" fill="#a9c6ba">site  +  CH₃⁺</text>
+        <path d="M34 98 H126" stroke="#dce9e2" stroke-width="2" fill="none"/>
+        <path d="M126 98 C 168 98, 178 158, 220 158" stroke="#9fd8c4" stroke-width="1.4"
+              stroke-dasharray="4 4" fill="none"/>
+        <path d="M220 158 H308" stroke="#dce9e2" stroke-width="2" fill="none"/>
+        <text x="220" y="178" font-size="11.5" fill="#a9c6ba">new bond formed</text>
+
+        <!-- energy drop -->
+        <path d="M330 100 V156" stroke="#9fd8c4" stroke-width="1.2" fill="none" marker-end="url(#af-arrow-s)"/>
+        <text x="340" y="134" font-size="13" fill="#9fd8c4">ΔE</text>
+      </g>
+
+      <text x="24" y="212" font-size="19" fill="#f2f5f1">MCA  =  −ΔE</text>
+      <text x="170" y="212" font-size="11.5" fill="#8fb3a6">methyl cation affinity</text>
+
+      <path d="M24 226 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="244" font-size="12.5" fill="#9fd8c4" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">The more energy released, the better the nucleophile.</text>
+    </g>
+
+    <!-- ===================== electrophilicity card ===================== -->
+    <g transform="translate(450 108)">
+      <rect width="390" height="252" rx="5" fill="#0f453c" opacity=".45" stroke="#c98b63" stroke-width="1"/>
+
+      <text x="24" y="38" font-size="15" letter-spacing="1.8" fill="#f3bd8c">ELECTROPHILICITY</text>
+      <text x="24" y="58" font-size="11.5" fill="#a9c6ba">a site hungry to take electrons</text>
+
+      <g>
+        <text x="34" y="88" font-size="11.5" fill="#a9c6ba">site  +  CH₃⁻</text>
+        <path d="M34 98 H126" stroke="#dce9e2" stroke-width="2" fill="none"/>
+        <path d="M126 98 C 168 98, 178 158, 220 158" stroke="#f3bd8c" stroke-width="1.4"
+              stroke-dasharray="4 4" fill="none"/>
+        <path d="M220 158 H308" stroke="#dce9e2" stroke-width="2" fill="none"/>
+        <text x="220" y="178" font-size="11.5" fill="#a9c6ba">new bond formed</text>
+
+        <path d="M330 100 V156" stroke="#f3bd8c" stroke-width="1.2" fill="none" marker-end="url(#af-arrow-w)"/>
+        <text x="340" y="134" font-size="13" fill="#f3bd8c">ΔE</text>
+      </g>
+
+      <text x="24" y="212" font-size="19" fill="#f2f5f1">MAA  =  −ΔE</text>
+      <text x="170" y="212" font-size="11.5" fill="#8fb3a6">methyl anion affinity</text>
+
+      <path d="M24 226 H366" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".35"/>
+      <text x="24" y="244" font-size="12.5" fill="#f3bd8c" font-style="italic"
+            font-family="'Libre Baskerville',Georgia,serif">The more energy released, the better the electrophile.</text>
+    </g>
+
+    <!-- footer -->
+    <path d="M40 396 H840" stroke="#7fa99b" stroke-width="1" stroke-dasharray="4 4" opacity=".4"/>
+    <text x="40" y="424" font-size="12.5" fill="#a9c6ba" letter-spacing=".4">
+      Every candidate site in a molecule gets its own number, so the sites can be ranked against each other.
+    </text>
+  </g>
+</svg>

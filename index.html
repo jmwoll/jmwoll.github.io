@@ -659,7 +659,7 @@
         <p>
           If you are interested in talking about this research, or about machine learning in drug discovery more
           generally, feel free to reach out to me by email:
-          <a href="mailto:janmwoll@gmail.com">janmwoll@gmail.com</a>
+          <a class="mail" data-u="llowmnaj" data-d="moc.liamg">email me</a>
         </p>
       </aside>
 
@@ -1284,6 +1284,19 @@
   <footer class="site-foot">
     Jan Wollschlaeger &middot; Machine Learning in Drug Discovery
   </footer>
+
+  <script>
+    // Assembles mail addresses at runtime, so they are not sitting in the
+    // page source for harvesters. Without JavaScript the link stays inert.
+    (function () {
+      const flip = s => s.split('').reverse().join('');
+      document.querySelectorAll('a.mail[data-u][data-d]').forEach(a => {
+        const address = flip(a.dataset.u) + '@' + flip(a.dataset.d);
+        a.href = 'mailto:' + address;
+        a.textContent = address;
+      });
+    })();
+  </script>
 
   <script>
     // Draws thin, evenly weighted contour lines of a smooth noise field.

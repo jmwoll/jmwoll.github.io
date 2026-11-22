@@ -3,8 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Machine Learning in Drug Discovery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #f2f5f1;
+      --ink-soft: #b9cfc6;
+      --deep: #0d3f37;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #f4f4f0;
+      font-family: "Josefin Sans", system-ui, sans-serif;
+    }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      padding: 32px clamp(16px, 2vw, 24px);
+      color: var(--ink);
+      background:
+        /* soft out-of-focus light, like a microscope / lab bokeh */
+        radial-gradient(circle at 54% 88%, rgba(220, 240, 235, .55) 0 2.5%, transparent 6%),
+        radial-gradient(circle at 48% 96%, rgba(200, 230, 225, .35) 0 3%, transparent 8%),
+        radial-gradient(circle at 36% 78%, rgba(190, 225, 215, .25) 0 2%, transparent 6%),
+        radial-gradient(circle at 96% 58%, rgba(214, 96, 62, .55) 0 2%, transparent 6%),
+        radial-gradient(ellipse at 88% 40%, rgba(150, 190, 160, .45), transparent 30%),
+        radial-gradient(ellipse at 70% 20%, rgba(120, 170, 150, .35), transparent 35%),
+        radial-gradient(ellipse at 10% 30%, rgba(110, 160, 110, .45), transparent 28%),
+        radial-gradient(ellipse at 25% 85%, rgba(20, 70, 60, .8), transparent 40%),
+        linear-gradient(100deg, #1c5a4c 0%, #145046 30%, #2c6a5a 60%, #4f8270 85%, #3d7563 100%);
+    }
+
+    /* hexagonal lattice (replaces the topographic texture) */
+    .site-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='72.75' viewBox='0 0 42 72.75'%3E%3Cpath d='M21 0 L42 12.12 L42 36.37 L21 48.5 L0 36.37 L0 12.12 Z M21 48.5 L21 72.75' fill='none' stroke='%23dff5ec' stroke-width='.8'/%3E%3C/svg%3E");
+      background-size: 42px 72.75px;
+      mask-image: linear-gradient(90deg, rgba(0,0,0,.4), #000 40%, rgba(0,0,0,.6));
+      -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.4), #000 40%, rgba(0,0,0,.6));
+    }
+
+    /* dashed assay-plate grid with + markers */
+    .site-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='120'%3E%3Cpath d='M0 .5 H170' stroke='%23ffffff' stroke-dasharray='4 4'/%3E%3Cpath d='M.5 0 V120' stroke='%23ffffff' stroke-dasharray='4 4'/%3E%3Cpath d='M-5 .5 H5 M.5 -5 V5' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/svg%3E");
+      background-position: 55px 18px;
+    }
+
+    /* faint, blurred molecule skeletons floating in the background */
+    .molecules {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      filter: blur(1.2px);
+      opacity: .22;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: clamp(14px, 3vw, 36px);
+    }
+
+    .brand svg.logo {
+      flex: none;
+      width: clamp(84px, 11vw, 128px);
+      height: auto;
+      color: #e7eee6;
+      opacity: .92;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-weight: 300;
+      font-size: clamp(26px, 4.1vw, 50px);
+      letter-spacing: .06em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      text-shadow: 0 1px 12px rgba(0, 40, 30, .35);
+    }
+
+    .brand p {
+      margin: 10px 0 0;
+      font-family: "Libre Baskerville", Georgia, serif;
+      font-style: italic;
+      font-size: clamp(15px, 1.7vw, 21px);
+      color: var(--ink-soft);
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <svg class="molecules" viewBox="0 0 1280 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="#e8fff6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- molecule 1 -->
+        <g transform="translate(760 70) scale(1.1)">
+          <path d="M0 0 l26 -15 l26 15 v30 l-26 15 l-26 -15 z"/>
+          <path d="M8 4 l18 -10 M44 4 v22 M26 51 l-18 -10" />
+          <path d="M52 0 l26 -15 l26 15 M104 0 v30 M104 0 l22 -13"/>
+          <path d="M26 -15 v-24"/>
+          <circle cx="126" cy="-13" r="4"/>
+          <circle cx="26" cy="-43" r="4"/>
+        </g>
+        <!-- molecule 2 -->
+        <g transform="translate(1040 150) rotate(-18)">
+          <path d="M0 0 l26 -15 l26 15 v30 l-26 15 l-26 -15 z"/>
+          <circle cx="26" cy="15" r="13"/>
+          <path d="M52 30 l26 15 l26 -15 M78 45 v28"/>
+          <path d="M0 0 l-24 -14"/>
+          <circle cx="-28" cy="-16" r="4"/>
+        </g>
+        <!-- molecule 3 -->
+        <g transform="translate(470 175) rotate(12) scale(.9)">
+          <path d="M0 0 l26 -15 l26 15 v30 l-26 15 l-26 -15 z"/>
+          <path d="M52 0 l24 -18 l28 8 l2 29 l-28 11 z"/>
+          <path d="M106 19 l26 12"/>
+        </g>
+        <!-- molecule 4 -->
+        <g transform="translate(1180 40) rotate(25) scale(.8)">
+          <path d="M0 0 l26 -15 l26 15 v30 l-26 15 l-26 -15 z"/>
+          <path d="M0 30 l-26 15 v28"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="brand">
+      <!-- brush-stroke benzene ring (in place of the ensō) -->
+      <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"/>
+          </filter>
+        </defs>
+        <g filter="url(#brush)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 10 L103 35 L103 85 L60 110 L17 85 L17 33" stroke-width="9"/>
+          <path d="M22 30 L56 12" stroke-width="5" opacity=".85"/>
+          <circle cx="60" cy="60" r="24" stroke-width="4.5" stroke-dasharray="132 20" transform="rotate(-70 60 60)" opacity=".9"/>
+        </g>
+      </svg>
+      <div>
+        <h1>Machine Learning in Drug Discovery</h1>
+        <p>by Jan Wollschlaeger</p>
+      </div>
+    </div>
+  </header>
 </body>
 </html>

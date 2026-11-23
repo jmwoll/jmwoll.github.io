@@ -214,6 +214,79 @@
       color: var(--ink-soft);
     }
 
+    /* ======================================================= Seasonal note */
+    .seasonal {
+      padding: clamp(24px, 2.8vw, 36px) clamp(20px, 4vw, 72px);
+      background: var(--pale);
+    }
+    .seasonal-inner {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(16px, 2vw, 24px);
+      padding: clamp(20px, 2.2vw, 26px) clamp(20px, 2.4vw, 30px);
+      background: #fff;
+      border: 1px solid #dcc9b4;
+      overflow: hidden;
+    }
+    /* a ribbon along the top, in the page's own two colours */
+    .seasonal-inner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(
+        135deg,
+        var(--accent) 0 11px,
+        #f4f4f0 11px 22px,
+        var(--accent-warm) 22px 33px,
+        #f4f4f0 33px 44px
+      );
+    }
+    .seasonal img {
+      flex: none;
+      width: 46px;
+      height: 46px;
+      margin-top: 2px;
+    }
+    .seasonal-eyebrow {
+      margin: 0 0 6px;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+    }
+    .seasonal h2 {
+      margin: 0 0 8px;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(19px, 2vw, 23px);
+      letter-spacing: .03em;
+      line-height: 1.25;
+      color: var(--deep);
+    }
+    .seasonal p.blurb {
+      margin: 0;
+      font-size: 15.5px;
+      line-height: 1.62;
+      color: var(--body-soft);
+      max-width: 72ch;
+    }
+    .seasonal a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .seasonal a:hover { color: var(--accent-warm); }
+
+    @media (max-width: 620px) {
+      .seasonal-inner { flex-direction: column; gap: 14px; }
+    }
+
     /* ======================================================= Layout */
     .story-block { scroll-margin-top: 0; }
 
@@ -587,6 +660,21 @@
       </li>
     </ol>
   </nav>
+
+  <aside class="seasonal">
+    <div class="seasonal-inner">
+      <img src="assets/icon-bauble.svg" alt="">
+      <div>
+        <p class="seasonal-eyebrow">Seasonal detour</p>
+        <h2>raya-synth — a music synthesiser in C99</h2>
+        <p class="blurb">
+          Away from the papers: a Christmas recreational coding project. A music synthesiser written from scratch
+          in C99 and compiled to WebAssembly, so the whole thing runs in the browser.
+          <a href="https://github.com/jmwoll/raya-synth">See it on GitHub &rsaquo;</a>
+        </p>
+      </div>
+    </div>
+  </aside>
 
   <section class="story-block" id="wisp">
   <div class="layout">
